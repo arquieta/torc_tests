@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "fbc3991c-9d24-4552-bbc6-1b853f2b3bf8",
+		"name": "Torc tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20530522"
+	},
+	"item": [
+		{
+			"name": "Validate 3 results in areas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.count).to.eql(3);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.football-data.org/v4/competitions?areas=2001",
+					"protocol": "http",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v4",
+						"competitions"
+					],
+					"query": [
+						{
+							"key": "areas",
+							"value": "2001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate that areas can only be used with numbers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.football-data.org/v4/competitions?areas=two",
+					"protocol": "http",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v4",
+						"competitions"
+					],
+					"query": [
+						{
+							"key": "areas",
+							"value": "two"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate can't request a competition without right permissions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.football-data.org/v4/competitions?id=2021",
+					"protocol": "http",
+					"host": [
+						"api",
+						"football-data",
+						"org"
+					],
+					"path": [
+						"v4",
+						"competitions"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2021"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "8fhg93xkjd38fhg834jdfgjd",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
