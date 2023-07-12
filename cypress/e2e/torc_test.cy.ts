@@ -2,7 +2,7 @@ describe('Test for Torc using cypress', () => {
 	
 	beforeEach(() =>{
 		
-		cy.visit('https://duckduckgo.com');
+		cy.visit('/');
 		cy.title().then((title)=> {
 			cy.log(title);
 			expect(title).to.be.equal('DuckDuckGo — Privacy, simplified.')
