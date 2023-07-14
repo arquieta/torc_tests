@@ -3,6 +3,7 @@ This repository is only to have the assesments sent by Torc to me, Diego Arquiet
 In order to run the API testing, we should have installed newman and to generate the report htmlextra, please follow instructions
 
 Install newman:
+
 npm install -g newman
 
 Install htmlextra
