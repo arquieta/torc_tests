@@ -12,6 +12,7 @@ npm install -g newman-reporter-html
 npm install -g newman-reporter-htmlextra
 
 Run and export to a HTML report
+
 newman run YourCollectionName.json -n 3 -r htmlextra
 
 Other folders are regarding the cypress testing.
